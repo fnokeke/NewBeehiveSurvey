@@ -1,0 +1,31 @@
+{
+  "type": "recurring",
+  "identifier": "notification_date",
+  "title": "Notification Date",
+  "guid": "notification_date-1",
+  "activity": {
+    "type"      : "elementList",
+    "identifier": "notification",
+    "elements"   : [
+      {
+        "identifier":"notif_sleep_picker",
+        "type":"timePicker",
+        "text":"When do you plan to go to bed today?",
+        "optional": true
+      },
+      {
+          "identifier":"notification_time_picker",
+          "type":"timePicker",
+          "text":"Commit to a time before bed time when you will stop using your phone.",
+          "optional": false
+      },
+      {
+        "identifier"   : "resultsSleep",
+        "type"         : "instruction",
+        "title"        : "All Done!",
+        "text"         : "Regulating how much you use your device will put you on the path of sleeping better."
+      }
+    ]
+  },
+  "resultTransforms": []
+}

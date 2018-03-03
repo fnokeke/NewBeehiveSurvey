@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BHSurvey</string>
+    <string name="beehive_survey_app">Beehive Survey App</string>
+    <string name="launch_survey">Launch Survey</string>
+</resources>

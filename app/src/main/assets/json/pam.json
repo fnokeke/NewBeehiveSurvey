@@ -1,0 +1,35 @@
+{
+    "type": "recurring",
+    "identifier": "PAM",
+    "title": "PAM",
+    "guid": "pam-1",
+    "activity": {
+        "type"      : "elementList",
+        "identifier": "PAMTask",
+        "elements"   : [
+                        {
+                        "identifier":"introduction",
+                        "type":"instruction",
+                        "title":"PAM",
+                        "text":"Welcome to the Photographic Affect Meter (PAM) Task.",
+                        "optional": false
+                        },
+                        {
+                        "identifier"   : "PAM",
+                        "type"         : "PAM",
+                        "optional":true
+                        },
+                        {
+                        "identifier":"thanks",
+                        "type":"instruction",
+                        "title":"Thanks!",
+                        "text":"",
+                        "optional": false
+                        }
+                        ]
+    },
+    "resultTransforms": [
+
+    ]
+}
+
