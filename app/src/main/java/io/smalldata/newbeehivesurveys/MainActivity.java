@@ -16,6 +16,7 @@ public class MainActivity extends RSActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         activateSurveyButton();
+        activatePAMButton();
     }
 
     private void activateSurveyButton() {
@@ -28,6 +29,15 @@ public class MainActivity extends RSActivity {
         });
     }
 
+    private void activatePAMButton() {
+        Button btnSurvey = findViewById(R.id.btn_launch_pam);
+        btnSurvey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RSActivityManager.get().queueActivity(getApplicationContext(), "RSpam", true);
+            }
+        });
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
