@@ -3,4 +3,8 @@
     <string name="beehive_survey_app">Beehive Survey App</string>
     <string name="launch_survey">Launch Survey</string>
     <string name="launch_pam">Launch PAM</string>
+    <string name="instructions">
+        You need to grant permissions the first time so your survey responses can be stored.
+        After that, clicking on the buttons will open the different surveys.
+        Results are stored in your phone's root directory (e.g. as PAM.csv). </string>
 </resources>

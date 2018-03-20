@@ -1,4 +1,4 @@
-package io.smalldata.newbeehivesurveys.studyManagement;
+package io.smalldata.newbeehivesurveys.studyManagement;;
 
 import android.app.Activity;
 import android.content.Intent;

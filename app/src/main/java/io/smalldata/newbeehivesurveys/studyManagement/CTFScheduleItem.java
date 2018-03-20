@@ -1,10 +1,10 @@
-package io.smalldata.newbeehivesurveys.studyManagement;
+package io.smalldata.newbeehivesurveys.studyManagement;;
 
 import com.google.gson.JsonElement;
 
-import java.util.List;
+import org.researchsuite.rsrp.Core.RSRPResultTransform;
 
-import edu.cornell.tech.foundry.researchsuiteresultprocessor.RSRPResultTransform;
+import java.util.List;
 
 /**
  * Created by jameskizer on 1/19/17.

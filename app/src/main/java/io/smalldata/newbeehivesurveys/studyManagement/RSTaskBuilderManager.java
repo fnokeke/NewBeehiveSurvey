@@ -1,4 +1,4 @@
-package io.smalldata.newbeehivesurveys.studyManagement;
+package io.smalldata.newbeehivesurveys.studyManagement;;
 
 /**
  * Created by Christina on 8/11/17.

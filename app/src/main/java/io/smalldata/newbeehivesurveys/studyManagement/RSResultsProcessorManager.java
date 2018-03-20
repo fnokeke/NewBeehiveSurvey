@@ -1,9 +1,10 @@
-package io.smalldata.newbeehivesurveys.studyManagement;
+package io.smalldata.newbeehivesurveys.studyManagement;;
 
 import android.support.annotation.NonNull;
 
-import edu.cornell.tech.foundry.researchsuiteresultprocessor.RSRPBackEnd;
-import edu.cornell.tech.foundry.researchsuiteresultprocessor.RSRPResultsProcessor;
+import org.researchsuite.rsrp.CSVBackend.RSRPCSVBackend;
+import org.researchsuite.rsrp.Core.RSRPBackEnd;
+import org.researchsuite.rsrp.Core.RSRPResultsProcessor;
 
 import static com.google.common.base.Preconditions.checkState;
 
@@ -14,6 +15,7 @@ import static com.google.common.base.Preconditions.checkState;
 public class RSResultsProcessorManager {
 
     private static RSRPResultsProcessor resultsProcessor;
+    private static RSRPCSVBackend backend;
 
     /**
      * @return singleton instance
@@ -27,5 +29,11 @@ public class RSResultsProcessorManager {
     public static void init(RSRPBackEnd backEnd) {
         RSRPResultsProcessor builder = new RSRPResultsProcessor(backEnd);
         RSResultsProcessorManager.resultsProcessor = builder;
+        RSResultsProcessorManager.backend = (RSRPCSVBackend) backEnd;
     }
+
+    public static RSRPCSVBackend getBackend(){
+        return backend;
+    }
+
 }

@@ -1,7 +1,4 @@
-package io.smalldata.newbeehivesurveys.studyManagement;
-
-
-
+package io.smalldata.newbeehivesurveys.studyManagement;;
 
 /**
  * Created by Christina on 8/11/17.
@@ -20,10 +17,13 @@ import org.researchstack.backbone.storage.database.sqlite.SqlCipherDatabaseHelpe
 import org.researchstack.backbone.storage.database.sqlite.UpdatablePassphraseProvider;
 import org.researchstack.backbone.storage.file.UnencryptedProvider;
 import org.researchstack.skin.DataResponse;
+import org.researchsuite.rsrp.CSVBackend.RSRPCSVBackend;
+import org.researchsuite.rsrp.Core.RSRPResultsProcessor;
 
-import edu.cornell.tech.foundry.ohmageomhbackend.ORBEOhmageResultBackEnd;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import edu.cornell.tech.foundry.ohmageomhsdk.OhmageOMHManager;
-import edu.cornell.tech.foundry.researchsuiteresultprocessor.RSRPResultsProcessor;
 import rx.Single;
 import rx.SingleSubscriber;
 
@@ -45,7 +45,7 @@ public class RSApplication extends Application {
         AppDatabase dbAccess = createAppDatabaseImplementation(context);
         dbAccess.setEncryptionKey(encryptionProvider.getEncrypter().getDbKey());
 
-        io.smalldata.newbeehivesurveys.studyManagement.RSFileAccess fileAccess = createFileAccessImplementation(context);
+        RSFileAccess fileAccess = createFileAccessImplementation(context);
         fileAccess.setEncrypter(encryptionProvider.getEncrypter());
 
         StorageAccess.getInstance().init(
@@ -67,15 +67,29 @@ public class RSApplication extends Application {
 //                getString(R.string.ohmage_queue_directory)
 //        );
 
-        io.smalldata.newbeehivesurveys.studyManagement.RSResourcePathManager resourcePathManager = new io.smalldata.newbeehivesurveys.studyManagement.RSResourcePathManager();
+        String testDirectory = "/";
+        URI directoryURI = null;
+        try {
+            directoryURI = new URI(testDirectory);
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        RSRPCSVBackend CSVBackend = new RSRPCSVBackend(directoryURI);
+        RSRPResultsProcessor resultsProcessor = new RSRPResultsProcessor(CSVBackend);
+        RSResultsProcessorManager.init(CSVBackend);
+
+
+
+        RSResourcePathManager resourcePathManager = new RSResourcePathManager();
         ResourcePathManager.init(resourcePathManager);
         //config task builder singleton
         //task builder requires ResourceManager, ImpulsivityAppStateManager
-        io.smalldata.newbeehivesurveys.studyManagement.RSTaskBuilderManager.init(context, resourcePathManager, fileAccess);
+        RSTaskBuilderManager.init(context, resourcePathManager, fileAccess);
 
 
-        io.smalldata.newbeehivesurveys.studyManagement.RSResultsProcessorManager.init(ORBEOhmageResultBackEnd.getInstance());
-        RSRPResultsProcessor resultsProcessor = new RSRPResultsProcessor(ORBEOhmageResultBackEnd.getInstance());
+
 
     }
 
@@ -90,10 +104,10 @@ public class RSApplication extends Application {
 
 
 
-    protected io.smalldata.newbeehivesurveys.studyManagement.RSFileAccess createFileAccessImplementation(Context context)
+    protected RSFileAccess createFileAccessImplementation(Context context)
     {
         String pathName = "/rsuite";
-        return new io.smalldata.newbeehivesurveys.studyManagement.RSFileAccess(pathName);
+        return new RSFileAccess(pathName);
     }
 
     protected AppDatabase createAppDatabaseImplementation(Context context) {
@@ -118,7 +132,7 @@ public class RSApplication extends Application {
                     public void onCompletion(Exception e) {
 
                         Log.d("testing order: ","signed out");
-                        io.smalldata.newbeehivesurveys.studyManagement.RSFileAccess.getInstance().clearFileAccess(RSApplication.this);
+                        RSFileAccess.getInstance().clearFileAccess(RSApplication.this);
 
 
                         if (e != null) {

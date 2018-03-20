@@ -1,4 +1,4 @@
-package io.smalldata.newbeehivesurveys.studyManagement;
+package io.smalldata.newbeehivesurveys.studyManagement;;
 
 /**
  * Created by Christina on 8/11/17.
@@ -169,7 +169,16 @@ public class RSActivityManager {
                 activityRun.resultTransforms
         );
 
-        this.tryToLaunchActivity(context);
+        // TODO: do below for when user specifies delete
+//
+//        if(Objects.equals(activityRun.identifier, "yadl_full")){
+//            RSRPCSVBackend backend = RSResultsProcessorManager.getBackend();
+//            backend.removeFileForType("yadl_full");
+//
+//        }
+
+
+            this.tryToLaunchActivity(context);
 
     }
 
