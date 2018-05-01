@@ -152,7 +152,8 @@ Copy `app/src/main/resources` directory to your own directory
 #### 6e) Copy `bg_splash.xml` and `ic_launcher_foreground.xml` into your `res/drawable` folder
 
 ### 7) Add code
-- Import the 'rsrp' folder in this repo as a module into your project
+- If you plan on using PAM, then follow the steps here that involve importing rsrp folder:[click here](https://github.com/christinatsan/PAMDemo/tree/Beehive-Surveys). 
+- Otherwise, continue below:
 - Copy `studyManagement` directory in `app/src/main` into the same directory as `MainActivity` (same as this repo example)
 - Go to `studyManagement/RSApplication.java` and replace all `io.smalldata.newbeehivesurveys` with your package name
 - Change MainActivity to extend `RSActivity`: 
